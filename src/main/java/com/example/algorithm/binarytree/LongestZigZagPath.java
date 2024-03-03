@@ -40,7 +40,7 @@ public class LongestZigZagPath {
             case RIGHT:
                 rLeft = findLongest(root.left, Direction.LEFT, new Result(result).increment());
                 Result rFresh = findLongest(root.right, Direction.RIGHT, new Result().increment());
-                rRight = rLeft.length > rFresh.length ? rLeft : rFresh;
+                rLeft = rLeft.length > rFresh.length ? rLeft : rFresh;
 
                 break;
         }
