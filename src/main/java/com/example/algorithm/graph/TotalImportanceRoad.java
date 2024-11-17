@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class TotalImportanceRoad {
@@ -21,7 +22,7 @@ public class TotalImportanceRoad {
             cardinality.computeIfPresent(values[1], (now, prv)->prv+1l);
         }
         Map<Integer, Integer> weightageMap = cardinality.entrySet().stream().sorted((e1, e2)->-1 * e1.getValue().compareTo(e2.getValue()))
-                .map(i->i.getKey()).collect(Collectors.toMap(i->i,  (a)->weightage.getAndDecrement()));
+                .map(i->i.getKey()).collect(Collectors.toMap(Function.identity(),  (a)->weightage.getAndDecrement()));
 
         long sum = 0;
         for(int[] values : roads){
