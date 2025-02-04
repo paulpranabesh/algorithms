@@ -7,7 +7,10 @@ import java.util.Set;
 public class Node {
 
     private Integer data;
+    private Integer level;
     private Set<Node> neighbours;
+
+    private NodeVisitStatus visitStatus = NodeVisitStatus.UNVISITED;
 
     public Node(int data) {
         this.data = data;
@@ -32,6 +35,22 @@ public class Node {
         }
     }
 
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public void setVisitStatus(NodeVisitStatus visitStatus) {
+        this.visitStatus = visitStatus;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public NodeVisitStatus getVisitStatus() {
+        return visitStatus;
+    }
+
     public Integer value(){
         return data;
     }
@@ -44,6 +63,11 @@ public class Node {
         Node node = (Node) o;
 
         return data.equals(node.data);
+    }
+
+    @Override
+    public String toString() {
+        return "Node" + data;
     }
 
     @Override
