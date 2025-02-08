@@ -2,7 +2,7 @@ package com.example.algorithm.binarytree;
 
 public class BinarySearchTree {
 
-    public static void printInorder(TreeNodes node) {
+    public static void printInorder(InternalTreeNodes node) {
         if (node == null) {
             return;
         }
@@ -11,7 +11,7 @@ public class BinarySearchTree {
         printInorder(node.right);
     }
 
-    public static void printPreorder(TreeNodes node) {
+    public static void printPreorder(InternalTreeNodes node) {
         if (node == null) {
             return;
         }
@@ -20,7 +20,7 @@ public class BinarySearchTree {
         printPreorder(node.right);
     }
 
-    public static void printPostorder(TreeNodes node) {
+    public static void printPostorder(InternalTreeNodes node) {
         if (node == null) {
             return;
         }
@@ -30,13 +30,13 @@ public class BinarySearchTree {
     }
 
     public static void main(String[] args) {
-        TreeNodes TempNode;
-        TreeNodes prevNode;
-        TreeNodes root = null;
+        InternalTreeNodes TempNode;
+        InternalTreeNodes prevNode;
+        InternalTreeNodes root = null;
         int array[] = {5, 1, 15, 9, 7, 12, 30, 25, 40, 45, 42};
 
         for (int i = 0; i < array.length; i++) {
-            TreeNodes node = new TreeNodes(array[i]);
+            InternalTreeNodes node = new InternalTreeNodes(array[i]);
             if (root == null) {
                 root = node;
                 root.left = null;
@@ -71,12 +71,12 @@ public class BinarySearchTree {
         printPostorder(root);
     }
 
-    private static class TreeNodes {
+    private static class InternalTreeNodes {
         int value;
-        TreeNodes left;
-        TreeNodes right;
+        InternalTreeNodes left;
+        InternalTreeNodes right;
 
-        public TreeNodes(int value) {
+        public InternalTreeNodes(int value) {
             this.value = value;
         }
     }
