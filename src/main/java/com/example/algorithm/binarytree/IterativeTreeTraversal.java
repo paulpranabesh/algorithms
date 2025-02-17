@@ -9,7 +9,7 @@ public class IterativeTreeTraversal {
 
     public static void main(String[] args) {
         int[] values = new int[]{4,2,3,1,6,7,5};
-        TreeNode root = new IterativeTreeTraversal().createTree(values);
+        TreeNode root = new TreeManager().createTree(values);
         new IterativeTreeTraversal().inorder(root);
         System.out.println();
         new IterativeTreeTraversal().preOrder(root);
@@ -17,7 +17,7 @@ public class IterativeTreeTraversal {
         new IterativeTreeTraversal().postOrder(root);
     }
 
-    private void inorder(TreeNode root){
+    public void inorder(TreeNode root){
         TreeNode curr = root;
         Stack<TreeNode> stack = new Stack<>();
         while(!stack.isEmpty() || curr != null){
@@ -32,7 +32,7 @@ public class IterativeTreeTraversal {
         }
     }
 
-    private void preOrder(TreeNode root){
+    public void preOrder(TreeNode root){
         TreeNode curr = root;
         Stack<TreeNode> stack = new Stack<>();
         stack.push(curr);
@@ -77,36 +77,5 @@ public class IterativeTreeTraversal {
         return node==null || visitedMap.containsKey(node.getValue());
     }
 
-    private TreeNode createTree(int[] values){
-        TreeNode root = null;
-        for(int val : values){
-            if(root == null){
-                root = new TreeNode(val);
-            }else{
-                add(root, val);
-            }
-        }
-        return root;
-    }
 
-    private void add(TreeNode root, int val){
-        TreeNode curr = root;
-        while(true){
-            if(curr.getValue() >= val){
-                if(curr.getLeft() == null){
-                    curr.setLeft(new TreeNode(val));
-                    break;
-                }else{
-                    curr = curr.getLeft();
-                }
-            }else{
-                if(curr.getRight() == null){
-                    curr.setRight(new TreeNode(val));
-                    break;
-                }else{
-                    curr = curr.getRight();
-                }
-            }
-        }
-    }
 }
