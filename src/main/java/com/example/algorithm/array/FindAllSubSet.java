@@ -18,6 +18,9 @@ public class FindAllSubSet {
 
     public static void main(String[] args) {
         System.out.println(new FindAllSubSet().subsets(new int[]{1,2,3}));
+        int[] array = new int[]{1,2,3};
+            printCombination(array, new int[array.length], 0,0);
+
     }
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
@@ -44,4 +47,26 @@ public class FindAllSubSet {
         }
         return sb.toString()+binString;
     }
+
+    private static void printCombination(int[] array, int[] buffer, int startIndex, int bufIndex) {
+        // Print current combination
+        if (bufIndex > 0) {
+            for (int j = 0; j < bufIndex; j++) {
+                System.out.print(buffer[j] + " ");
+            }
+            System.out.println();
+        }
+
+        // Stop if we've reached the end of the array
+        if (startIndex == array.length) {
+            return;
+        }
+
+        // Try all combinations starting from current index
+        for (int i = startIndex; i < array.length; i++) {
+            buffer[bufIndex] = array[i];
+            printCombination(array, buffer, i + 1, bufIndex + 1);
+        }
+    }
+
 }
