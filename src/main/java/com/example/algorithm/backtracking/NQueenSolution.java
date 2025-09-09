@@ -1,4 +1,4 @@
-package com.example.algorithm.backtracking.sudoku;
+package com.example.algorithm.backtracking;
 
 import java.util.LinkedList;
 import java.util.List;
