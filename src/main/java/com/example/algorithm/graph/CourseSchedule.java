@@ -27,7 +27,6 @@ public class CourseSchedule {
     private boolean cycleDetect(Node currNode){
         if(currNode.visitStatus == NodeVisitStatus.VISITING){
             return true;
-
         }
 
         currNode.setVisitStatus(NodeVisitStatus.VISITING);
